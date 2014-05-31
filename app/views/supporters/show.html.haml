@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @supporter.name
+%p
+  %b Email:
+  = @supporter.email
+%p
+  %b Phone:
+  = @supporter.phone
+
+= link_to 'Edit', edit_supporter_path(@supporter)
+\|
+= link_to 'Back', supporters_path
