@@ -283,6 +283,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.0.0)
   database_cleaner (= 1.0.1)
+  dotenv
   email_spec
   factory_girl_rails
   foreman
