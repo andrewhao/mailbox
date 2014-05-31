@@ -13,6 +13,8 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'puma'
 gem "therubyracer"
+gem "psych"
+gem "rest-client"
 
 group :development do
   gem 'better_errors'
@@ -47,6 +49,7 @@ group :development, :test do
   gem 'rspec-rails'
 end
 group :test do
+  gem "webmock"
   gem 'capybara'
   gem 'database_cleaner', '1.0.1'
   gem 'email_spec'
