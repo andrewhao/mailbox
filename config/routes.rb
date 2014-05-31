@@ -1,5 +1,5 @@
 Mailbox::Application.routes.draw do
-  root :to => "visitors#index"
+  root :to => "home#index"
   resources :users, :only => [:index, :show, :edit, :update ]
   get '/auth/:provider/callback' => 'sessions#create'
   get '/signin' => 'sessions#new', :as => :signin
