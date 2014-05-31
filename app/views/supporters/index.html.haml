@@ -1,12 +1,10 @@
 %h1 Listing supporters
 
-%table
+%table.table.table-striped
   %tr
     %th Name
     %th Email
     %th Phone
-    %th
-    %th
     %th
 
   - @supporters.each do |supporter|
@@ -14,9 +12,10 @@
       %td= supporter.name
       %td= supporter.email
       %td= supporter.phone
-      %td= link_to 'Show', supporter
-      %td= link_to 'Edit', edit_supporter_path(supporter)
-      %td= link_to 'Destroy', supporter, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td
+        %a= link_to 'Show', supporter
+        %a= link_to 'Edit', edit_supporter_path(supporter)
+        %a= link_to 'Destroy', supporter, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
