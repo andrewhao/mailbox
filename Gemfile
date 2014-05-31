@@ -12,7 +12,7 @@ gem 'haml-rails'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'puma'
-
+gem "therubyracer"
 
 group :development do
   gem 'better_errors'
