@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Text:
+  = @letter.text
+
+= link_to 'Edit', edit_letter_path(@letter)
+\|
+= link_to 'Back', letters_path
