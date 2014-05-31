@@ -12,6 +12,8 @@ gem 'haml-rails'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'puma'
+
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19]
@@ -30,7 +32,13 @@ group :development do
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
 end
+
+group :production do
+  gem "pg"
+end
+
 group :development, :test do
+  gem "sqlite3"
   gem 'factory_girl_rails'
   gem 'pry-rails'
   gem 'pry-rescue'
