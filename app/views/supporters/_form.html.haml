@@ -8,12 +8,12 @@
 
   .field
     = f.label :name
-    = f.text_field :name
+    = f.text_field :name, class: 'form-control'
   .field
     = f.label :email
-    = f.text_field :email
+    = f.text_field :email, class: 'form-control'
   .field
     = f.label :phone
-    = f.text_field :phone
+    = f.text_field :phone, class: 'form-control'
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', class: 'btn btn-default'

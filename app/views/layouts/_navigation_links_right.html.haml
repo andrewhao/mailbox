@@ -1,4 +1,11 @@
 - if user_signed_in?
-  %li= link_to 'Sign out', signout_path
+  %li
+    = link_to signout_path do
+      %span.glyphicon.glyphicon-off
+      Sign Out
 - else
-  %li= link_to 'Sign in', signin_path
+  %li
+    = link_to signin_path do
+      %span.glyphicon.glyphicon-off
+      Sign In
+      

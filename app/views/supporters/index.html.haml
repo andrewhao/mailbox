@@ -5,7 +5,7 @@
     %th Name
     %th Email
     %th Phone
-    %th
+    %th Actions
 
   - @supporters.each do |supporter|
     %tr
@@ -19,4 +19,4 @@
 
 %br
 
-= link_to 'New Supporter', new_supporter_path
+= link_to 'New Supporter', new_supporter_path, class: 'btn btn-default'

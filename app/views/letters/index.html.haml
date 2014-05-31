@@ -2,8 +2,8 @@
 
 %table.table.table-striped
   %tr
-    %th Text
-    %th Actions
+    %th.col-md-4 Text
+    %th.col-md-1 Actions
 
   - @letters.each do |letter|
     %tr
@@ -14,4 +14,4 @@
         %a= link_to 'Destroy', letter, :method => :delete, :data => { :confirm => 'Are you sure?' }
 %br
 
-= link_to 'New Letter', new_letter_path
+= link_to 'New Letter', new_letter_path, class: 'btn btn-default'
