@@ -18,6 +18,10 @@ module Api
         end
       end
 
+      def find_by_token_and_code(token, code)
+        response = RestClient.get "#{singular_resource_url(token)}/#{code}"
+        new JSON.parse(response)
+      end
 
       def collection_url(parent_id)
         "#{client.base_url}/author/#{parent_id}/documents"
