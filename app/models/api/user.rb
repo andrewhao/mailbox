@@ -24,5 +24,9 @@ module Api
         "#{client.base_url}/author/#{id}"
       end
     end
+    
+    def id
+      self.email
+    end
   end
 end

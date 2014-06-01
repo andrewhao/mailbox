@@ -1,6 +1,6 @@
 module Api
   class Supporter < BaseResource
-    class << self
+    class << self      
       def create(options={})
         response = RestClient.post(create_url,
                             options)
@@ -39,6 +39,10 @@ module Api
     def save
       self.class.create(to_hash)
       true
+    end
+    
+    def id
+      self.email
     end
   end
 end
