@@ -10,6 +10,8 @@ module Api
         new JSON.parse(response)
       end
 
+      # TODO add security
+      # TODO use a unique ID instead of email as the primary key!
       def find(id)
         response = RestClient.get singular_url(id)
         new JSON.parse(response)
