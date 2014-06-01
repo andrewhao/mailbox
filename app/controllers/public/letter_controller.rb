@@ -1,7 +1,7 @@
 class Public::LetterController < ApplicationController
   def index
     token = params[:token]
-    @supporter =  Api::Letter.get_interstitial(token)
+    @supporter =  Api::Letter.authorize_link_and_get_username(token)
   end
   
   def send_code
