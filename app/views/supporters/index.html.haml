@@ -11,7 +11,7 @@
     %tr
       %td= supporter.name
       %td= supporter.email
-      %td= supporter.phone
+      %td= number_to_phone(supporter.phone)
       %td
         -# %a= link_to 'Show', supporter 
         -# \|

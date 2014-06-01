@@ -1,24 +1,25 @@
 %h3 Letters
 
-%table.table.table-striped
-  %tr
-    %th.col-md-4 Subject
-    %th.col-md-1 Actions
-
-  - @letters.each do |letter|
+.row
+  %table.table.table-striped
     %tr
-      %td 
-        =letter.subject ? letter.subject : "(No Subject)"
-        - if letter.draft?
-          %sup.red= 'Draft'
-      %td
-        = link_to 'Show', letter
-        - if letter.draft?
-          = link_to 'Edit', edit_letter_path(letter)
-          = link_to 'Delete', letter, :method => :delete, :data => { :confirm => "Are you sure you want to delete '#{letter.subject}'?"}
-          = link_to 'Send', letter_send_letter_path(letter), :method => :post, :action => :send_letter, :data => { :confirm => "Send '#{letter.subject}' securely to all of your supporters?" }
-        - else
-          = link_to 'Unsend', letter_unsend_letter_path(letter), :method => :post, :action => :unsend_letter, :data => { :confirm => "You have already sent '#{letter.subject}'. All of the messages already sent will become invalid.  Are you sure?" }
+      %th.col-md-4 Subject
+      %th.col-md-1 Actions
+
+    - @letters.each do |letter|
+      %tr
+        %td 
+          =letter.subject ? letter.subject : "(No Subject)"
+          - if letter.draft?
+            %sup.red= 'Draft'
+        %td
+          = link_to 'Show', letter
+          - if letter.draft?
+            = link_to 'Edit', edit_letter_path(letter)
+            = link_to 'Delete', letter, :method => :delete, :data => { :confirm => "Are you sure you want to delete '#{letter.subject}'?"}
+            = link_to 'Send', letter_send_letter_path(letter), :method => :post, :action => :send_letter, :data => { :confirm => "Send '#{letter.subject}' securely to all of your supporters?" }
+          - else
+            = link_to 'Unsend', letter_unsend_letter_path(letter), :method => :post, :action => :unsend_letter, :data => { :confirm => "You have already sent '#{letter.subject}'. All of the messages already sent will become invalid.  Are you sure?" }
 %br
 
 = link_to 'New Letter', new_letter_path, class: 'btn btn-default'
