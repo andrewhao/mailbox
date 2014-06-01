@@ -21,9 +21,10 @@ class Public::LetterController < ApplicationController
     @code = params[:code]
     @token = params[:token]
 
-    if @code == "1234" #temporary for testing
-      @letter = Letter.first
-    else
+    begin
+      response = Api::Letter.find_by_token_and_code(code, token)
+      @letter = response
+    rescue
       respond_to do |format|
         format.html { redirect_to view_letter_start_path, notice: 'Invalid code or link.' }
       end
