@@ -13,12 +13,12 @@ class SessionsController < ApplicationController
 
     reset_session
     session[:user_id] = user.email
-    redirect_to letters_url, :notice => 'Signed in!'
+    redirect_to letters_url
   end
 
   def destroy
     reset_session
-    redirect_to root_url, :notice => 'Signed out!'
+    redirect_to root_url
   end
 
   def failure

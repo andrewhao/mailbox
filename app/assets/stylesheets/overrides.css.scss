@@ -1,7 +1,30 @@
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro|Lobster);
+
+h1, h2, h3 {
+    font-family: 'Lobster';
+}
+
+h4, h5, h6, p, div {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
 .navbar-default .navbar-brand {
   color: #333;
   font-size: 30px;
   font-weight: bold;
+  font-family: 'Lobster';
+}
+
+.step-container {
+  font-family: 'Lobster';
+}
+
+.step {
+  font-family: 'Lobster';
+}
+
+.lobster {
+  font-family: 'Lobster';
 }
 
 .navbar-default .navbar-brand {
