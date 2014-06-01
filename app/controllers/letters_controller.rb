@@ -5,7 +5,7 @@ class LettersController < ApplicationController
   # GET /letters
   # GET /letters.json
   def index
-    @letters = Letter.all
+    @letters = Api::Letter.all(current_user.email)
     if @letters.length==0
       redirect_to({ action: 'new'}, notice: 'Welcome to MailSafe! Get started writing your first letter below and click "Save" to see a preview of your message. To manage subscribers, click the Contacts tab above.')
     end
@@ -28,12 +28,12 @@ class LettersController < ApplicationController
   # POST /letters
   # POST /letters.json
   def create
-    @letter = Letter.new(letter_params)
+    @letter = Api::Letter.new(letter_params)
     
     @letter.draft=true
 
     respond_to do |format|
-      if @letter.save
+      if @letter.save(current_user)
         format.html { redirect_to @letter, notice: 'Letter was successfully created.' }
         format.json { render action: 'show', status: :created, location: @letter }
       else
@@ -103,10 +103,11 @@ class LettersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_letter
-      @letter = Letter.find(params[:id])
+      @letter = Api::Letter.find(params[:id])
     end
+
     def set_letter2
-      @letter = Letter.find(params[:letter_id])
+      @letter = Api::Letter.find(params[:letter_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
