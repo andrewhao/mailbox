@@ -30,6 +30,7 @@ describe SessionsController do
       expect(Api::User).to receive(:find)
         .with(email)
         .and_return(mock_user)
+        .any_number_of_times
 
       visit '/signin'
 
@@ -45,6 +46,7 @@ describe SessionsController do
       expect(Api::User).to receive(:find)
         .with(email)
         .and_return(nil)
+        .any_number_of_times
 
       expect(Api::User).to receive(:create)
         .with(author_email: email, author_name: name)
