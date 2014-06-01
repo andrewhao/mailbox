@@ -1,11 +1,13 @@
 class Public::LetterController < ApplicationController
   def index
-    @token = params[:token]
+    token = params[:token]
+    @supporter =  Api::Letter.get_interstitial(token)
   end
   
   def send_code
-    @token = params[:token]
-    # request code from the server
+    token = params[:token]
+    phone_method = params[:phone_method]
+    Api::Letter.send_code(token,phone_method)
     respond_to do |format|
       format.html { redirect_to enter_code_path, notice: 'A code has been sent to the phone number on file.' }
       format.json { render action: '', status: :sent }
