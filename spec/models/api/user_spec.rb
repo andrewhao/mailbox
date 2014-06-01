@@ -10,6 +10,11 @@ describe Api::User do
     {'Accept'=>'*/*; q=0.5, application/xml', 'Accept-Encoding'=>'gzip, deflate', 'User-Agent'=>'Ruby'}
   }
 
+  describe "#find" do
+    let(:url) do
+      "https://mail-safe.appspot.com/author/#{author_email}"
+    end
+
   describe "#create" do
     it "POSTs to https://mail-safe.appspot.com/author/create" do
       url = "https://mail-safe.appspot.com/author/create"
@@ -29,11 +34,6 @@ describe Api::User do
       expect(created_instance).to be_instance_of described_class
     end
   end
-
-  describe "#find" do
-    let(:url) do
-      "https://mail-safe.appspot.com/author/#{author_email}"
-    end
 
     it "GETs at https://mail-safe.appspot.com/author/:email" do
       stub_request(
