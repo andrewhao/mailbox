@@ -1,9 +1,10 @@
 %p#notice= notice
 
 %p
-  %b Text:
-  = @letter.text
+  %b= "Subject: " + (@letter.subject ? @letter.subject : "(No Subject)")
+  %br
+  %b Message:
+  %br
+  = @letter.text.html_safe
 
-= link_to 'Edit', edit_letter_path(@letter)
-\|
 = link_to 'Back', letters_path

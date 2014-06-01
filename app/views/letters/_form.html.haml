@@ -1,13 +1,17 @@
-= form_for @letter do |f|
+= bootstrap_form_for @letter do |f|
   - if @letter.errors.any?
     #error_explanation
       %h2= "#{pluralize(@letter.errors.count, "error")} prohibited this letter from being saved:"
       %ul
         - @letter.errors.full_messages.each do |msg|
           %li= msg
-
   .field
-    = f.label :text
-    = f.text_area :text, class: 'form-control'
+    = f.text_field :subject
+  .field
+    = f.text_area :text, id: 'letter_text'
   .actions
-    = f.submit 'Save', class: 'btn btn-default'
+    = f.submit 'Save', class: 'btn btn-primary'
+:javascript
+  $(document).ready(function() {
+    $('#letter_text').wysihtml5();
+  });

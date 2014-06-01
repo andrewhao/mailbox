@@ -1,2 +1,16 @@
-%h3 MailSafe
-%p Welcome to MailSafe, a safer way to send mail.
+.row
+  .col-md-4
+    .h3.text-center Step 1:
+    =image_tag "something.gif", class: "img-med"
+    .h4.text-center Login and create messages
+  .col-md-4
+    .h3.text-center Step 2:
+    =image_tag "something.gif", class: "img-med"
+    .h4.text-center Fill-in your contacts
+  .col-md-4
+    .h3.text-center Step 3:
+    =image_tag "something.gif", class: "img-med"
+    .h4.text-center Securely deliver your message to recipients
+.row
+  .col-md-4.col-md-offset-4.text-center
+    =link_to "Sign-In with your Google account", signin_path, class: "btn btn-primary"

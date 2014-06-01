@@ -13,8 +13,10 @@
       %td= supporter.email
       %td= supporter.phone
       %td
-        %a= link_to 'Show', supporter
-        %a= link_to 'Edit', edit_supporter_path(supporter)
+        %a= link_to 'Show', supporter 
+        \|
+        %a= link_to 'Edit', edit_supporter_path(supporter) 
+        \|
         %a= link_to 'Destroy', supporter, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br

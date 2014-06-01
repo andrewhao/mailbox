@@ -1,4 +1,4 @@
-= form_for @supporter do |f|
+= bootstrap_form_for @supporter do |f|
   - if @supporter.errors.any?
     #error_explanation
       %h2= "#{pluralize(@supporter.errors.count, "error")} prohibited this supporter from being saved:"
@@ -7,13 +7,10 @@
           %li= msg
 
   .field
-    = f.label :name
-    = f.text_field :name, class: 'form-control'
+    = f.text_field :name
   .field
-    = f.label :email
-    = f.text_field :email, class: 'form-control'
+    = f.text_field :email
   .field
-    = f.label :phone
-    = f.text_field :phone, class: 'form-control'
+    = f.text_field :phone
   .actions
-    = f.submit 'Save', class: 'btn btn-default'
+    = f.submit 'Save'

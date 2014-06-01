@@ -2,13 +2,13 @@
 
 %table.table.table-striped
   %tr
-    %th.col-md-4 Text
+    %th.col-md-4 Subject
     %th.col-md-1 Actions
 
   - @letters.each do |letter|
     %tr
       %td 
-        =letter.text
+        =letter.subject ? letter.subject : "(No Subject)"
         - if letter.is_draft?
           %sup.red= 'Draft'
       %td

@@ -16,6 +16,8 @@ gem "therubyracer"
 gem "psych"
 gem "rest-client"
 gem "hashie"
+gem 'bootstrap-wysihtml5-rails'
+gem 'bootstrap_form'
 
 group :development do
   gem 'better_errors'

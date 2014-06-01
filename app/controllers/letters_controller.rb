@@ -28,7 +28,7 @@ class LettersController < ApplicationController
 
     respond_to do |format|
       if @letter.save
-        format.html { redirect_to @letter, notice: 'Letter was successfully created.' }
+        format.html { redirect_to letters_url, notice: 'Letter was successfully created.' }
         format.json { render action: 'show', status: :created, location: @letter }
       else
         format.html { render action: 'new' }
@@ -69,6 +69,6 @@ class LettersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def letter_params
-      params.require(:letter).permit(:text)
+      params.require(:letter).permit(:subject, :text)
     end
 end

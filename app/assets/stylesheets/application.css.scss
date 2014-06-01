@@ -11,6 +11,8 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require rails_bootstrap_forms
+ *= require bootstrap-wysihtml5/b3
  *= require overrides
  *= require_self
  */
