@@ -6,7 +6,7 @@
         - @letter.errors.full_messages.each do |msg|
           %li= msg
   .field
-    = f.text_field :subject
+    = f.text_field :subject, :autofocus => true
   .field
     = f.text_area :text, id: 'letter_text', style: "height:400px"
   .actions
