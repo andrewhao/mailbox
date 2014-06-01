@@ -305,6 +305,7 @@ DEPENDENCIES
   guard-rails
   guard-rspec
   haml-rails
+  hashie
   html2haml
   jbuilder (~> 1.2)
   jquery-rails

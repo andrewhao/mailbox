@@ -15,6 +15,7 @@ gem 'puma'
 gem "therubyracer"
 gem "psych"
 gem "rest-client"
+gem "hashie"
 
 group :development do
   gem 'better_errors'
