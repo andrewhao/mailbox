@@ -28,7 +28,7 @@ class LettersController < ApplicationController
 
     respond_to do |format|
       if @letter.save
-        format.html { redirect_to letters_url, notice: 'Letter was successfully created.' }
+        format.html { redirect_to @letter, notice: 'Letter was successfully created.' }
         format.json { render action: 'show', status: :created, location: @letter }
       else
         format.html { render action: 'new' }
