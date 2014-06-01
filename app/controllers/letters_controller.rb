@@ -79,12 +79,15 @@ class LettersController < ApplicationController
 
   # GET /letters/1/unsend
   def unsend_letter
+    
+    
     respond_to do |format|
-      if @letter.save
-        format.html { redirect_to letters_path, notice: 'Letter was successfully unsent.' }
-      else
-        format.html { redirect_to letters_path }
-      end
+      format.html { redirect_to letters_path, notice: 'Unsend is not yet implemented.' }
+      #if @letter.unsend_mail!(current_user)
+      #  format.html { redirect_to letters_path, notice: 'Letter was successfully unsent.' }
+      #else
+      #  format.html { redirect_to letters_path }
+      #end
     end
   end
 
