@@ -44,10 +44,10 @@ class SupportersController < ApplicationController
     respond_to do |format|
       if @supporter.save
         if update
-          format.html { redirect_to supporters_url, notice: 'Supporter was successfully updated.' }
+          format.html { redirect_to supporters_url, notice: "Supporter #{@supporter.name} was successfully updated." }
           format.json { render action: 'show', status: :created, location: @supporter }
         else
-          format.html { redirect_to supporters_url, notice: 'Supporter was successfully created.' }
+          format.html { redirect_to supporters_url, notice: "Supporter #{@supporter.name} was successfully created." }
           format.json { render action: 'show', status: :created, location: @supporter }
         end
       else
@@ -63,7 +63,7 @@ class SupportersController < ApplicationController
     puts "update"
     respond_to do |format|
       if @supporter.update(supporter_params)
-        format.html { redirect_to @supporter, notice: 'Supporter was successfully updated.' }
+        format.html { redirect_to @supporter, notice: "Supporter #{@supporter.name} was successfully updated." }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
