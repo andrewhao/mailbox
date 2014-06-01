@@ -2,11 +2,11 @@ module Api
   class Letter < BaseResource
     class << self
       def find(id)
-        response = RestClient.get singular_resource_url(id)
+        response = RestClient.get singular_document_resource_url(id)
         new JSON.parse(response)
       end
 
-      def singular_resource_url(id)
+      def singular_document_resource_url(id)
         "#{client.base_url}/doc/#{id}"
       end
 
@@ -53,8 +53,13 @@ module Api
       end
     end
 
-    def update(params)
-      RestClient.put self.class.singular_url(id), params
+    def update(author, params)
+      params.reverse_merge!(author_email: author.email)
+      RestClient.put self.class.singular_document_resource_url(id), params
+    end
+
+    def destroy
+      RestClient.delete self.class.singular_document_resource_url(id)
     end
 
     def save(user)
@@ -64,6 +69,13 @@ module Api
       rescue
         false
       end
+    end
+
+    def send_mail!
+      RestClient.post "#{self.class.singular_document_resource_url(id)}/send", {}
+      true
+    rescue RestClient::Exception
+      false
     end
 
     def draft?
