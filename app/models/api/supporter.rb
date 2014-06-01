@@ -8,15 +8,15 @@ module Api
         new JSON.parse(response)
       end
 
-      def create_url
-        "#{client.base_url}/supporter/create"
-      end
-
       def find(id)
         response = RestClient.get singular_url(id)
         new JSON.parse(response)
       rescue RestClient::ResourceNotFound
         nil
+      end
+
+      def create_url
+        "#{client.base_url}/supporter/create"
       end
 
       def singular_url(id)
@@ -36,8 +36,8 @@ module Api
       end
     end
 
-    def save(user)
-      self.class.create(to_hash.merge({author_email: user.email}))
+    def save
+      self.class.create(to_hash)
       true
     end
     
