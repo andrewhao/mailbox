@@ -1,22 +1,23 @@
 %h3 Letters
 
-%table.table.table-striped
-  %tr
-    %th.col-md-4 Subject
-    %th.col-md-1 Actions
-
-  - @letters.each do |letter|
+.row
+  %table.table.table-striped
     %tr
-      %td 
-        =letter.subject ? letter.subject : "(No Subject)"
-        - if letter.is_draft?
-          %sup.red= 'Draft'
-      %td
-        - if letter.is_draft?
-          = link_to 'Edit', edit_letter_path(letter)
-          = link_to 'Delete', letter, :method => :delete, :data => { :confirm => 'Are you sure?' }
-        - else
-          = link_to 'Show', letter
+      %th.col-md-4 Subject
+      %th.col-md-1 Actions
+
+    - @letters.each do |letter|
+      %tr
+        %td 
+          =letter.subject ? letter.subject : "(No Subject)"
+          - if letter.is_draft?
+            %sup.red= 'Draft'
+        %td
+          - if letter.is_draft?
+            = link_to 'Edit', edit_letter_path(letter)
+            = link_to 'Delete', letter, :method => :delete, :data => { :confirm => 'Are you sure?' }
+          - else
+            = link_to 'Show', letter
 %br
 
 = link_to 'New Letter', new_letter_path, class: 'btn btn-default'
