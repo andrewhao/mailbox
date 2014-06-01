@@ -1,3 +1,10 @@
+- if @supporters.empty?
+  .row
+    .col-md-6.col-md-offset-3
+      %div{class:"alert alert-warning",id:"addsupporters"}
+        %p
+          You don't yet have anyone in your list.  Please add a supporter or import contacts from GMail.
+
 %h3= @supporters.count ? pluralize(@supporters.count, "Supporter") : "No Supporters"
 
 %table.table.table-striped
