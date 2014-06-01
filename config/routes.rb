@@ -11,4 +11,8 @@ Mailbox::Application.routes.draw do
   get "/contacts/failure" => "contact_import#failure"
   get "/contacts/approve" => "contact_import#approve"
   get "/contacts/reject" => "contact_import#reject"
+  get '/public/letter/:token' => 'public/letter#index', :as => :view_letter_start
+  post '/public/letter/:token' => 'public/letter#send_code', :as => :send_code
+  get '/public/letter/:token/enter_code' => 'public/letter#enter_code', :as => :enter_code
+  get '/public/letter/:token/view' => 'public/letter#view', :as => :view_letter
 end

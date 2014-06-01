@@ -1,0 +1,6 @@
+%p
+  %b= "Subject: " + (@letter.subject ? @letter.subject : "(No Subject)")
+  %br
+  %b Message:
+  %br
+  = @letter.text.html_safe
