@@ -18,16 +18,17 @@ module Api
         end
       end
 
+
       def collection_url(parent_id)
         "#{client.base_url}/author/#{parent_id}/documents"
       end
 
       def authorize_link_and_get_username(token)
-        response = RestClient.get supporter_link(token)
+        response = RestClient.get singular_url(token)
         JSON.parse(response)[:support_name]
       end
 
-      def supporter_link(token)
+      def singular_url(token)
         "#{client.base_url}/letter/#{token}"
       end
 
@@ -48,6 +49,10 @@ module Api
       end
     end
 
+    def update(params)
+      RestClient.put self.class.singular_url(id), params
+    end
+
     def save(user)
       begin
         self.class.create(to_hash.merge({author_email: user.email}))
@@ -57,5 +62,21 @@ module Api
       end
     end
 
+    def draft?
+      status == "draft"
+    end
+
+    def id
+      return to_hash['key']
+    end
+
+    def crud_path
+      h = Rails.application.routes.url_helpers
+      id.nil? ? h.lette rs_path : h.letter_path(self)
+    end
+
+    def persisted?
+      false
+    end
   end
 end
