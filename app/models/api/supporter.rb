@@ -35,7 +35,7 @@ module Api
         end
       end
     end
-    
+
     def save
       self.class.create(to_hash)
     end
