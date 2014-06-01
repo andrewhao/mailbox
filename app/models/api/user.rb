@@ -3,12 +3,17 @@ module Api
   class User < BaseResource
     class << self
       def create(options={})
-        RestClient.post(create_url,
-                        options)
+        response = RestClient.post(create_url,
+                            options)
+
+        new JSON.parse(response)
       end
 
       def find(id)
-        RestClient.get singular_url(id)
+        response = RestClient.get singular_url(id)
+        new JSON.parse(response)
+      rescue RestClient::ResourceNotFound
+        nil
       end
 
       def create_url

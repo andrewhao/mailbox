@@ -6,11 +6,14 @@ class SessionsController < ApplicationController
 
   def create
     auth = request.env["omniauth.auth"]
-    user = User.where(:provider => auth['provider'],
-                      :uid => auth['uid'].to_s).first || User.create_with_omniauth(auth)
+    email = auth['info']['email']
+    name = auth['info']['name']
+
+    user = Api::User.find(email) || Api::User.create(author_email: email, author_name: name)
+
     reset_session
-    session[:user_id] = user.id
-    redirect_to root_url, :notice => 'Signed in!'
+    session[:user_id] = user.email
+    redirect_to letters_url, :notice => 'Signed in!'
   end
 
   def destroy
