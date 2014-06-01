@@ -14,7 +14,7 @@ class SupportersController < ApplicationController
 
   # GET /supporters/new
   def new
-    @supporter = Supporter.new
+    @supporter = Api::Supporter.new
   end
 
   # GET /supporters/1/edit
@@ -66,7 +66,7 @@ class SupportersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_supporter
-      @supporter = Supporter.find(params[:id])
+      @supporter = Api::Supporter.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
