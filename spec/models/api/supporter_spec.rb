@@ -119,4 +119,13 @@ describe Api::Supporter do
       expect(subject.id).to eq subject.email
     end
   end
+
+  describe "#to_param" do
+    let(:email) { "hellopanda+k@ gmail.com" }
+    subject { described_class.new(email: email) }
+
+    it "uses a string from the ID and URI escapes it" do
+      expect(subject.to_param).to eq "hellopanda+k@%20gmail%2Ecom"
+    end
+  end
 end

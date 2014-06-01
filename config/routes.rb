@@ -5,7 +5,10 @@ Mailbox::Application.routes.draw do
     post 'unsend_letter' => 'letters#unsend_letter'
   end
 
-  resources :supporters
+  constraints(id: /[^\/]+/) do 
+    resources :supporters
+  end
+
 
   resources :users, :only => [:index, :show, :edit, :update ]
   get '/auth/:provider/callback' => 'sessions#create'

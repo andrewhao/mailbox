@@ -1,3 +1,5 @@
+require 'uri'
+
 module Api
   class Supporter < BaseResource
     class << self
@@ -40,7 +42,16 @@ module Api
       self.class.create(to_hash)
       true
     end
-    
+
+    def destroy
+      RestClient.delete self.class.singular_url(id)
+    end
+
+
+    def to_param
+      URI.escape(URI.escape(id), /\./)
+    end
+
     def id
       self.email
     end

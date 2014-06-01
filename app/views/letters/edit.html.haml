@@ -2,6 +2,6 @@
 
 = render 'form'
 
-= link_to 'Show', @letter
+= link_to 'Preview', letter_path(@letter.id), class: "btn btn-default"
 \|
 = link_to 'Back', letters_path
