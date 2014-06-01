@@ -6,6 +6,6 @@
     .col-md-4.col-md-offset-4
       .text-center
         .row
-          =button_to "Text Me!", send_code_path, phone_method: 'sms', method: 'POST', class: 'btn btn-primary', token: @token
+          =button_to "Text Me!", send_code_path, params: {phone_method: 'sms'}, method: 'POST', class: 'btn btn-primary', token: @token
         .row
-          =button_to "Call Me!", send_code_path, phone_method: 'phone', method: 'POST', class: 'btn btn-success', token: @token
+          =button_to "Call Me!", send_code_path, params: {phone_method: 'phone'}, method: 'POST', class: 'btn btn-success', token: @token
