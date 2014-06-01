@@ -1,21 +1,32 @@
 .row
-  =image_tag "mailsafe.svg", style: "padding: 10px"
+  =image_tag "mailsafe.svg", style: "padding: 10px", id: "logo"
 .row.text-center
   .h2 Communicate with confidence
 .row
   .col-md-4.col-md-offset-4.text-center
     =link_to "Sign-In with your Google account", signin_path, class: "btn btn-primary"
 %br
-.row.bg-blue
-  .col-md-4
+.row.bg-blue.step-container
+  .col-md-4.step
     .h3.text-center Step 1:
     =image_tag "mail.svg", class: "img-med"
     .h4.text-center Login and create messages
-  .col-md-4
+  .col-md-4.step
     .h3.text-center Step 2:
     =image_tag "user.svg", class: "img-med"
     .h4.text-center Fill-in your contacts
-  .col-md-4
+  .col-md-4.step
     .h3.text-center Step 3:
     =image_tag "paperplane.svg", class: "img-med"
     .h4.text-center Securely deliver your message to recipients
+:javascript
+  $(document).ready(function() {
+    fadeIn = function(el) {
+      $(el).fadeIn('slow');
+    };
+    $(".step-container").hide().fadeIn(1500);
+    $(".step").each(function(i, el) {
+      $(el).hide();
+      setTimeout(function() { fadeIn(el) }, (i + 1) * 500);
+    });
+  });
