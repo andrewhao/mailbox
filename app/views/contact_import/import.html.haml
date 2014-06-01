@@ -1,20 +1,20 @@
-%h1 Contacts have been imported!
+%h1 Choose contacts to import
 
-= link_to 'View Supporters', supporters_path
 
-%br
-%br
-
-%p These contacts have been imported:
+%p Please click "Import" for each contact you wish to add to your Supporters list.  Click 'Skip' to hide a contact that you do not want. 
 
 %table.table.table-striped
   %tr
+    %th Action
     %th Name
     %th Email
     %th Phone
 
   - @contacts.each do |contact|
-    %tr
+    %tr{name:contact[:email]}
+      %td{nowrap:'true'}
+        = link_to 'Import', {controller: 'contact_import', action:'approve', name:contact[:name], email:contact[:email], phone_number:contact[:phone_number], remote:true}, {class: 'btn btn-success'} 
+        = link_to 'Skip', {controller: 'contact_import', action:'reject', name:contact[:name], email:contact[:email], phone_number:contact[:phone_number], remote:true}, {class: 'btn btn-danger'}
       %td= contact[:name]
       %td= contact[:email]
       %td= contact[:phone_number]
