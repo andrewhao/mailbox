@@ -7,10 +7,10 @@
           %li= msg
 
   .field
-    = f.text_field :name
+    = f.text_field :name, placeholder: "John Doe"
   .field
-    = f.text_field :email
+    = f.text_field :email, placeholder: "someone@example.com"
   .field
-    = f.text_field :phone
+    = f.text_field :phone, placeholder: "123-456-7890"
   .actions
     = f.submit 'Save'

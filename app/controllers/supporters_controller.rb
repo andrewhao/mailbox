@@ -30,7 +30,7 @@ class SupportersController < ApplicationController
 
     respond_to do |format|
       if @supporter.save
-        format.html { redirect_to @supporter, notice: 'Supporter was successfully created.' }
+        format.html { redirect_to supporters_url, notice: 'Supporter was successfully created.' }
         format.json { render action: 'show', status: :created, location: @supporter }
       else
         format.html { render action: 'new' }

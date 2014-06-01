@@ -1,10 +1,14 @@
-%p#notice= notice
+%h3
+  Viewing Letter
 
-%p
-  %b= "Subject: " + (@letter.subject ? @letter.subject : "(No Subject)")
-  %br
-  %b Message:
-  %br
-  = @letter.text.html_safe
+%div{class:"well"}
+  %b
+    Subject:
+  = @letter.subject 
 
-= link_to 'Back', letters_path
+%div{class:"well"}
+  = @letter.text.html_safe 
+
+
+
+= link_to 'Back to list of letters', letters_path
