@@ -1,13 +1,13 @@
 class ContactImportController < ApplicationController
 
   def approve
-    puts "approve";
+    binding.pry
     if params[:email]
-        @supporter = Supporter.find_by email: params[:email]
+        @supporter = Api::Supporter.find params[:email]
         if @supporter
           puts "Contact already exists"
         else
-          @supporter = Supporter.new
+          @supporter = Api::Supporter.new
         end
         
         @supporter.name = params[:name]
@@ -24,8 +24,6 @@ class ContactImportController < ApplicationController
   end
   
   def reject
-    puts "reject";
-    # ; 
     render :js => "$(\"tr[name='#{params[:email]}']\").hide()"
   end
 

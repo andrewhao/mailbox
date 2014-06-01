@@ -90,4 +90,25 @@ describe Api::Supporter do
       expect(instance.save).to be_true
     end
   end
+
+  describe "attribute setting" do
+    it "will persist an attribute to create on save" do
+      params = {foo: "bar"}
+      expected_params = {foo: "bar", newfoo: "baz"}
+      instance = described_class.new params
+      instance.newfoo = "baz"
+
+      url = "https://mail-safe.appspot.com/supporter/create"
+
+      stub_request(
+        :post,
+        url
+      ).with(
+        :body => expected_params,
+        :headers => headers
+      ).to_return(:body => JSON.generate(expected_params))
+
+      expect(instance.save).to be_true
+    end
+  end
 end
