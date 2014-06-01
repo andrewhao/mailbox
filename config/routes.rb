@@ -4,7 +4,9 @@ Mailbox::Application.routes.draw do
     post 'send_letter' => 'letters#send_letter'
     post 'unsend_letter' => 'letters#unsend_letter'
   end
+
   resources :supporters
+
   resources :users, :only => [:index, :show, :edit, :update ]
   get '/auth/:provider/callback' => 'sessions#create'
   get '/signin' => 'sessions#new', :as => :signin

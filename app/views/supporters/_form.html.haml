@@ -1,4 +1,4 @@
-= bootstrap_form_for @supporter do |f|
+= bootstrap_form_for @supporter, url: supporters_path do |f|
   - if @supporter.errors.any?
     #error_explanation
       %h2= "#{pluralize(@supporter.errors.count, "error")} prohibited this supporter from being saved:"

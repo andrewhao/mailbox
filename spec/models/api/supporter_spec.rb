@@ -111,4 +111,12 @@ describe Api::Supporter do
       expect(instance.save).to be_true
     end
   end
+
+  describe "#id" do
+    subject { described_class.new(email: email) }
+
+    it "aliases email" do
+      expect(subject.id).to eq subject.email
+    end
+  end
 end

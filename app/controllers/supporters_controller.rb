@@ -71,6 +71,6 @@ class SupportersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def supporter_params
-      params.require(:supporter).permit(:name, :email, :phone)
+      params.require(:api_supporter).permit(:name, :email, :phone)
     end
 end
