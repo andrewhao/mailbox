@@ -13,10 +13,10 @@
           - if letter.draft?
             %sup.red= 'Draft'
         %td{nowrap:"true",style:"text-align:right"}
-          = link_to 'View', letter_path(letter.id), class: 'btn btn-default'
+          = link_to 'View', letter_path(letter), class: 'btn btn-default'
           - if letter.draft?
-            = link_to 'Edit', edit_letter_path(letter.id), class: 'btn btn-default'
-            = link_to 'Delete', letter, :method => :delete, :data => { :confirm => "Are you sure you want to delete '#{letter.subject}'?"}, class: 'btn btn-danger'
-            = link_to 'Send', letter_send_letter_path(letter.id), :method => :post, :action => :send_letter, :data => { :confirm => "Send '#{letter.subject}' securely to all of your supporters?" }, class: 'btn btn-success'
+            = link_to 'Edit', edit_letter_path(letter), class: 'btn btn-default'
+            = link_to 'Delete', letter_path(letter), :method => :delete, :data => { :confirm => "Are you sure you want to delete '#{letter.subject}'?"}, class: 'btn btn-danger'
+            = link_to 'Send', letter_send_letter_path(letter), :method => :post, :action => :send_letter, :data => { :confirm => "Send '#{letter.subject}' securely to all of your supporters?" }, class: 'btn btn-success'
           - else
-            = link_to 'Unsend', letter_unsend_letter_path(letter.id), :method => :post, :action => :unsend_letter, :data => { :confirm => "You have already sent '#{letter.subject}'. All of the messages already sent will become invalid.  Are you sure?" }, class: 'btn btn-warning'
+            = link_to 'Unsend', letter_unsend_letter_path(letter), :method => :post, :action => :unsend_letter, :data => { :confirm => "You have already sent '#{letter.subject}'. All of the messages already sent will become invalid.  Are you sure?" }, class: 'btn btn-warning'
