@@ -44,7 +44,7 @@ class LettersController < ApplicationController
   # PATCH/PUT /letters/1.json
   def update
     respond_to do |format|
-      if @letter.update(letter_params)
+      if @letter.update(current_user, letter_params)
         format.html { redirect_to @letter, notice: 'Letter was successfully updated.' }
         format.json { head :no_content }
       else
@@ -66,32 +66,22 @@ class LettersController < ApplicationController
 
   # GET /letters/1/send
   def send_letter
-    puts "sending #{@letter.subject}"
-    @letter.draft=false
-    
     respond_to do |format|
-      if @letter.save
+      if @letter.send_mail!
         format.html { redirect_to @letter, notice: 'Letter was successfully sent.' }
-        format.json { head :no_content }
       else
-        format.html { render action: 'index' }
-        format.json { render json: @letter.errors, status: :unprocessable_entity }
+        format.html { redirect_to letters_path, alert: "Error sending message. Please wait and try again." }
       end
     end
   end
 
   # GET /letters/1/unsend
   def unsend_letter
-    puts "sending #{@letter.subject}"
-    @letter.draft=true
-
     respond_to do |format|
       if @letter.save
         format.html { redirect_to letters_path, notice: 'Letter was successfully unsent.' }
-        format.json { head :no_content }
       else
-        format.html { render action: 'index' }
-        format.json { render json: @letter.errors, status: :unprocessable_entity }
+        format.html { redirect_to letters_path }
       end
     end
   end

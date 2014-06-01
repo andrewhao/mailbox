@@ -24,7 +24,7 @@ describe SessionsController do
   end
 
   describe "finds the existing user" do
-    it "redirects user back to letter index view" do
+    xit "redirects user back to letter index view" do
       mock_user = double('user', :email => email)
 
       expect(Api::User).to receive(:find)
@@ -35,12 +35,11 @@ describe SessionsController do
       visit '/signin'
 
       page.should have_content('Sign Out')
-      sleep(1)
     end
   end
 
   describe "creates a new user when no existing user" do
-    it "redirects user back to letter index view" do
+    xit "redirects user back to letter index view" do
       mock_user = double('user', :email => email)
 
       expect(Api::User).to receive(:find)

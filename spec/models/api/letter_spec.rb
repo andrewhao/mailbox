@@ -46,4 +46,27 @@ describe Api::Letter do
       })
     end
   end
+
+  describe "#send_mail!" do
+    let(:url) { "https://mail-safe.appspot.com/doc/#{doc_id}/send" }
+    let(:doc_id) { subject.id }
+    let(:letter_params) do
+      {:key => "123"}
+    end
+
+    subject { described_class.new(letter_params) }
+
+    it "sends a POST req to /doc/:doc_id/send" do
+      stub_request(
+        :post,
+        url
+      ).to_return({
+        body: JSON.generate(
+          letter_params
+        )
+      })
+
+      expect(subject.send_mail!).to be_true
+    end
+  end
 end
