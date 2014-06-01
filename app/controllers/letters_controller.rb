@@ -45,7 +45,7 @@ class LettersController < ApplicationController
   def update
     respond_to do |format|
       if @letter.update(current_user, letter_params)
-        format.html { redirect_to @letter, notice: 'Letter was successfully updated.' }
+        format.html { redirect_to letters_path, notice: "Letter '#{@letter.subject}' was successfully updated." }
         format.json { head :no_content }
       else
         flash.now[:alert] = "Could not update letter. Please try again later."
