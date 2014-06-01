@@ -7,6 +7,7 @@ class LettersController < ApplicationController
   def index
     @letters = Api::Letter.all(current_user.email)
     if @letters.empty?
+      flash[:noletters] = true
       redirect_to({ action: 'new'}, notice: 'Welcome to MailSafe! Get started writing your first letter below and click "Save" to see a preview of your message. To manage subscribers, click the Contacts tab above.')
     end
   end
