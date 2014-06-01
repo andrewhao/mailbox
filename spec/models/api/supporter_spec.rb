@@ -71,4 +71,23 @@ describe Api::Supporter do
       expect(result).to be_nil
     end
   end
+
+  describe "#save" do
+    it "sends a post" do
+      params = {foo: "bar"}
+      instance = described_class.new params
+
+      url = "https://mail-safe.appspot.com/supporter/create"
+
+      stub_request(
+        :post,
+        url
+      ).with(
+        :body => params,
+        :headers => headers
+      ).to_return(:body => JSON.generate(params))
+
+      expect(instance.save).to be_true
+    end
+  end
 end

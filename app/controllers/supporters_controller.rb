@@ -4,7 +4,7 @@ class SupportersController < ApplicationController
   # GET /supporters
   # GET /supporters.json
   def index
-    @supporters = Supporter.all
+    @supporters = Api::Supporter.all(current_user.email)
   end
 
   # GET /supporters/1
@@ -24,7 +24,9 @@ class SupportersController < ApplicationController
   # POST /supporters
   # POST /supporters.json
   def create
-    @supporter = Supporter.new(supporter_params)
+    author_hash={author_email: current_user.email}
+    author_hash.merge!(supporter_params)
+    @supporter = Api::Supporter.new(author_hash)
 
     respond_to do |format|
       if @supporter.save
@@ -60,7 +62,7 @@ class SupportersController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_supporter

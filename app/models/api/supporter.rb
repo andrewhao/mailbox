@@ -22,6 +22,23 @@ module Api
       def singular_url(id)
         "#{client.base_url}/supporter/#{id}"
       end
+
+      def collection_url(parent_id)
+        "#{client.base_url}/author/#{parent_id}/supporters"
+      end
+
+      def all(parent_id)
+        response=RestClient.get collection_url(parent_id)
+        json_array = JSON.parse(response)
+        json_array.map do | hash |
+          new hash
+        end
+      end
+    end
+
+    def save
+      self.class.create(to_hash)
+      true
     end
   end
 end

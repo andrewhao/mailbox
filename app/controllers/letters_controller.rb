@@ -1,5 +1,6 @@
 class LettersController < ApplicationController
   before_action :set_letter, only: [:show, :edit, :update, :destroy]
+  before_action :set_letter2, only: [:send_letter, :unsend_letter]
 
   # GET /letters
   # GET /letters.json
@@ -25,6 +26,8 @@ class LettersController < ApplicationController
   # POST /letters.json
   def create
     @letter = Letter.new(letter_params)
+    
+    @letter.draft=true
 
     respond_to do |format|
       if @letter.save
@@ -61,10 +64,46 @@ class LettersController < ApplicationController
     end
   end
 
+  # GET /letters/1/send
+  def send_letter
+    puts "sending #{@letter.subject}"
+    @letter.draft=false
+    
+    respond_to do |format|
+      if @letter.save
+        format.html { redirect_to @letter, notice: 'Letter was successfully sent.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'index' }
+        format.json { render json: @letter.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # GET /letters/1/unsend
+  def unsend_letter
+    puts "sending #{@letter.subject}"
+    @letter.draft=true
+
+    respond_to do |format|
+      if @letter.save
+        format.html { redirect_to @letter, notice: 'Letter was successfully unsent.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'index' }
+        format.json { render json: @letter.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_letter
       @letter = Letter.find(params[:id])
+    end
+    def set_letter2
+      @letter = Letter.find(params[:letter_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
