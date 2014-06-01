@@ -33,6 +33,9 @@ class ContactImportController < ApplicationController
   # GET /contact_import.json
   def import
     @contacts = request.env['omnicontacts.contacts']
+    @contacts = @contacts.reject do |contact|
+        !contact[:phone_number] || !contact[:email]
+    end
   end
 
 end
