@@ -1,0 +1,24 @@
+%h1 Contacts have been imported!
+
+= link_to 'View Supporters', supporters_path
+
+%br
+%br
+
+%p These contacts have been imported:
+
+%table.table.table-striped
+  %tr
+    %th Name
+    %th Email
+    %th Phone
+
+  - @contacts.each do |contact|
+    %tr
+      %td= contact[:name]
+      %td= contact[:email]
+      %td= contact[:phone_number]
+
+%br
+
+= link_to 'View Supporters', supporters_path

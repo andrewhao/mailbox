@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/Diego81/omnicontacts.git
+  revision: 25e5fe9653d740ee23036e5149ca0d70a6273803
+  specs:
+    omnicontacts (0.3.5)
+      json
+      rack
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -316,6 +324,7 @@ DEPENDENCIES
   jquery-rails
   omniauth
   omniauth-google-oauth2
+  omnicontacts!
   pg
   pry-rails
   pry-rescue

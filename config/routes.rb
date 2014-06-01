@@ -7,4 +7,6 @@ Mailbox::Application.routes.draw do
   get '/signin' => 'sessions#new', :as => :signin
   get '/signout' => 'sessions#destroy', :as => :signout
   get '/auth/failure' => 'sessions#failure'
+  get "/contacts/gmail/callback" => "contact_import#import"
+  get "/contacts/failure" => "contact_import#failure"
 end
