@@ -90,7 +90,7 @@ class LettersController < ApplicationController
 
     respond_to do |format|
       if @letter.save
-        format.html { redirect_to @letter, notice: 'Letter was successfully unsent.' }
+        format.html { redirect_to letters_path, notice: 'Letter was successfully unsent.' }
         format.json { head :no_content }
       else
         format.html { render action: 'index' }
