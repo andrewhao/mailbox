@@ -1,2 +1,9 @@
-Get Your Code:
-=button_to "Text Me!", send_code_path, method: 'POST', class: 'btn btn-primary'
+.row
+  .col-md-4.col-md-offset-4
+    In order to view this message we need to first confirm your identity. Please click below to receive a code via text.
+  .col-md-4.col-md-offset-4
+    .text-center
+      .row
+        =button_to "Text Me!", send_code_path, method: 'POST', class: 'btn btn-primary'
+      .row
+        =button_to "Call Me!", send_code_path, method: 'POST', class: 'btn btn-success'

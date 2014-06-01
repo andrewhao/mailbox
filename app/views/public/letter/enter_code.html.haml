@@ -1,4 +1,6 @@
-Enter Code:
-=form_tag view_letter_path, method: :get, class: "form-inline" do
-  =text_field_tag :code
-  =submit_tag "View", class: "btn btn-primary"
+.row
+  .col-md-4.col-md-offset-4
+    .text-center
+      =form_tag view_letter_path, method: :get, class: "form-inline" do
+        =text_field_tag :code, nil, placeholder: "Enter Code", class: "form-control"
+        =submit_tag "View", class: "btn btn-primary"
