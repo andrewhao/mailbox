@@ -6,7 +6,7 @@ class LettersController < ApplicationController
   # GET /letters.json
   def index
     @letters = Api::Letter.all(current_user.email)
-    if @letters.length==0
+    if @letters.empty?
       redirect_to({ action: 'new'}, notice: 'Welcome to MailSafe! Get started writing your first letter below and click "Save" to see a preview of your message. To manage subscribers, click the Contacts tab above.')
     end
   end
@@ -29,16 +29,13 @@ class LettersController < ApplicationController
   # POST /letters.json
   def create
     @letter = Api::Letter.new(letter_params)
-    
-    @letter.draft=true
+    @letter.draft = true
 
     respond_to do |format|
       if @letter.save(current_user)
         format.html { redirect_to letters_path, notice: 'Letter was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @letter }
       else
         format.html { render action: 'new' }
-        format.json { render json: @letter.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -114,4 +111,4 @@ class LettersController < ApplicationController
     def letter_params
       params.require(:api_letter).permit(:subject, :text)
     end
-end
+  end

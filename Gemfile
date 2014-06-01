@@ -49,6 +49,7 @@ group :development, :test do
   gem "sqlite3"
   gem 'factory_girl_rails'
   gem 'pry-rails'
+  gem 'pry-nav'
   gem 'pry-rescue'
   gem 'rspec-rails'
 end
