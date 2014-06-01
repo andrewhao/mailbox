@@ -34,8 +34,8 @@ describe SessionsController do
 
       visit '/signin'
 
-      page.should have_content('Signed in!')
-      current_path.should == letters_path
+      page.should have_content('Sign Out')
+      sleep(1)
     end
   end
 
@@ -54,8 +54,7 @@ describe SessionsController do
 
       visit '/signin'
 
-      page.should have_content('Signed in!')
-      current_path.should == letters_path
+      page.should have_content('Welcome to MailSafe')
     end
   end
 end

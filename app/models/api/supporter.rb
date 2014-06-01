@@ -1,6 +1,6 @@
 module Api
   class Supporter < BaseResource
-    class << self      
+    class << self
       def create(options={})
         response = RestClient.post(create_url,
                             options)
