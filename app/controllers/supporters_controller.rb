@@ -19,19 +19,37 @@ class SupportersController < ApplicationController
 
   # GET /supporters/1/edit
   def edit
+    puts "edit"
   end
 
   # POST /supporters
   # POST /supporters.json
   def create
+    # For now, updates are handled by the "create". We just detect if the supporter
+    # already exists.
+    # I have no idea why the form posts to 'create' instead of 'update' -NK
+    update = false
+    if params[:api_supporter][:email]
+      @supporter = Api::Supporter.find(params[:api_supporter][:email])
+      if @supporter
+        update =true
+        @supporter.destroy
+      end
+    end
+    
     author_hash={author_email: current_user.email}
     author_hash.merge!(supporter_params)
     @supporter = Api::Supporter.new(author_hash)
 
     respond_to do |format|
       if @supporter.save
-        format.html { redirect_to supporters_url, notice: 'Supporter was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @supporter }
+        if update
+          format.html { redirect_to supporters_url, notice: 'Supporter was successfully updated.' }
+          format.json { render action: 'show', status: :created, location: @supporter }
+        else
+          format.html { redirect_to supporters_url, notice: 'Supporter was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @supporter }
+        end
       else
         format.html { render action: 'new' }
         format.json { render json: @supporter.errors, status: :unprocessable_entity }
@@ -42,6 +60,7 @@ class SupportersController < ApplicationController
   # PATCH/PUT /supporters/1
   # PATCH/PUT /supporters/1.json
   def update
+    puts "update"
     respond_to do |format|
       if @supporter.update(supporter_params)
         format.html { redirect_to @supporter, notice: 'Supporter was successfully updated.' }

@@ -12,7 +12,10 @@
       %td= supporter.name
       %td= supporter.email
       %td= number_to_phone(supporter.phone)
-      %td.actions= link_to "Remove", supporter_path(supporter), method: :delete
+      %td.actions
+        %a= link_to 'Edit', edit_supporter_path(supporter) 
+        \|
+        %a= link_to "Remove", supporter_path(supporter), method: :delete
 
 %br
 
