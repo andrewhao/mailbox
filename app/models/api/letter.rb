@@ -3,7 +3,12 @@ module Api
 
     def update(author, params)
       params.reverse_merge!(author_email: author.email)
-      RestClient.put self.class.singular_document_resource_url(id), params
+      begin
+        RestClient.post self.class.singular_document_resource_url(id), params
+      rescue => e
+        puts e.message
+        false
+      end
     end
 
     def destroy
@@ -70,8 +75,12 @@ module Api
       end
 
       def authorize_link_and_get_username(token)
-        response = RestClient.get singular_letter_resource_url(token)
-        JSON.parse(response)[:support_name]
+        begin
+          response = RestClient.get singular_letter_resource_url(token)
+          JSON.parse(response)[:support_name]
+        rescue
+          false
+        end
       end
 
       def send_code(token, phone_method)

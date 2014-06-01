@@ -1,12 +1,17 @@
-%li
-  = link_to letters_path do
-    %span.glyphicon.glyphicon-envelope
-    Letters
-%li
-  = link_to supporters_path do
-    %span.glyphicon.glyphicon-user
-    Supporters
-%li
-  = link_to new_letter_path do
-    %span.glyphicon.glyphicon-plus
-    Compose Letter
+- @tabs = []
+- @tabs << ["Letters", "glyphicon glyphicon-envelope", letters_path]
+- @tabs << ["Supporters", "glyphicon glyphicon-user", supporters_path]
+- @tabs << ["Compose Letter", "glyphicon glyphicon-plus", new_letter_path]
+- @tabs.each do |tab|
+  %li{class: ("active" if current_page?(tab[2]))}
+    = link_to tab[2] do
+      %span{class: tab[1]}
+      =tab[0]
+/ %li
+/   = link_to supporters_path do
+/     %span.glyphicon.glyphicon-user
+/     Supporters
+/ %li
+/   = link_to new_letter_path do
+/     %span.glyphicon.glyphicon-plus
+/     Compose Letter
