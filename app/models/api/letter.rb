@@ -96,6 +96,10 @@ module Api
       id.nil? ? :post : :patch
     end
 
+    def to_param
+      id
+    end
+
     def persisted?
       false
     end

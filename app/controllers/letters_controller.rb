@@ -68,7 +68,7 @@ class LettersController < ApplicationController
   def send_letter
     respond_to do |format|
       if @letter.send_mail!
-        format.html { redirect_to @letter, notice: 'Letter was successfully sent.' }
+        format.html { redirect_to letter_path(@letter), notice: 'Letter was successfully sent.' }
       else
         format.html { redirect_to letters_path, alert: "Error sending message. Please wait and try again." }
       end
