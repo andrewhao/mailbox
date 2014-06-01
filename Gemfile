@@ -11,6 +11,7 @@ gem 'bootstrap-sass'
 gem 'haml-rails'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+gem "omnicontacts", :git => 'https://github.com/Diego81/omnicontacts.git'
 gem 'puma'
 gem "therubyracer"
 gem "psych"
