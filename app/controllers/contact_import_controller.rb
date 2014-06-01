@@ -1,35 +1,38 @@
 class ContactImportController < ApplicationController
-  before_action :set_letter, only: [:show, :edit, :update, :destroy]
 
-  # GET /contact_import
-  # GET /contact_import.json
-  def import
-    @contacts = request.env['omnicontacts.contacts']
-    # @user = request.env['omnicontacts.user']
-    # puts "List of contacts of #{user[:name]} obtained from #{params[:importer]}:"
-    @contacts.each do |contact|
-      puts "Contact found: name => #{contact[:name]}, email => #{contact[:email]}, phone => #{contact[:phone_number]}"
-      
-      # only import contact if it has an email
-      if contact[:email]
-        @supporter = Supporter.find_by email: contact[:email]
+  def approve
+    puts "approve";
+    if params[:email]
+        @supporter = Supporter.find_by email: params[:email]
         if @supporter
           puts "Contact already exists"
         else
           @supporter = Supporter.new
         end
         
-        @supporter.name = contact[:name]
-        @supporter.email = contact[:email]
-        @supporter.phone = contact[:phone_number]
+        @supporter.name = params[:name]
+        @supporter.email = params[:email]
+        @supporter.phone = params[:phone_number]
         
-        #if @supporter.save
-        #  puts "Contact saved"
-        #else
-        #  puts "Contact not saved"
-        #end
+        if @supporter.save
+          puts "Contact saved"
+        else
+          puts "Contact not saved"
+        end
+        render :js => "$(\"tr[name='#{params[:email]}']\").slideUp(700)"
       end
-    end
+  end
+  
+  def reject
+    puts "reject";
+    # ; 
+    render :js => "$(\"tr[name='#{params[:email]}']\").slideUp(700)"
+  end
+
+  # GET /contact_import
+  # GET /contact_import.json
+  def import
+    @contacts = request.env['omnicontacts.contacts']
   end
 
 end
