@@ -1,5 +1,4 @@
-- binding.pry
-= bootstrap_form_for @letter, url: @letter.crud_path do |f|
+= bootstrap_form_for @letter, url: @letter.crud_path, method: @letter.crud_form_action do |f|
   - if @letter.errors.any?
     #error_explanation
       %h2= "#{pluralize(@letter.errors.count, "error")} prohibited this letter from being saved:"

@@ -72,7 +72,11 @@ module Api
 
     def crud_path
       h = Rails.application.routes.url_helpers
-      id.nil? ? h.lette rs_path : h.letter_path(self)
+      id.nil? ? h.letters_path : h.letter_path(id)
+    end
+
+    def crud_form_action
+      id.nil? ? :post : :patch
     end
 
     def persisted?
