@@ -48,7 +48,7 @@ class LettersController < ApplicationController
         format.html { redirect_to @letter, notice: 'Letter was successfully updated.' }
         format.json { head :no_content }
       else
-        flash[:alert] = "Could not update letter. Please try again later."
+        flash.now[:alert] = "Could not update letter. Please try again later."
         format.html { render action: 'edit' }
         format.json { render json: @letter.errors, status: :unprocessable_entity }
       end

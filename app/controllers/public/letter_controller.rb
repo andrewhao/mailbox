@@ -2,7 +2,7 @@ class Public::LetterController < ApplicationController
   def index
     token = params[:token]
     @supporter =  Api::Letter.authorize_link_and_get_username(token)
-    flash[:error] = "Invalid or expired link." unless @supporter
+    flash.now[:alert] = "Invalid or expired link." unless @supporter
   end
   
   def send_code

@@ -77,9 +77,13 @@ module Api
       def authorize_link_and_get_username(token)
         begin
           response = RestClient.get singular_letter_resource_url(token)
-          JSON.parse(response)[:support_name]
-        rescue
-          false
+          JSON.parse(response)['name']
+        rescue => e
+          if e.response.code == 401
+            JSON.parse(e.response)['name']
+          else
+            false
+          end
         end
       end
 
