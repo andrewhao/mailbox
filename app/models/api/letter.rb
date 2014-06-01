@@ -58,8 +58,8 @@ module Api
       end
 
       def find_by_token_and_code(token, code)
-        response = RestClient.get "#{singular_resource_url(token)}/#{code}"
-        new JSON.parse(response)
+          response = RestClient.get "#{singular_letter_resource_url(token)}/#{code}"
+          new JSON.parse(response)
       end
 
       def singular_document_resource_url(id)
@@ -88,11 +88,15 @@ module Api
       end
 
       def send_code(token, phone_method)
-        RestClient.post(authorize_link(token), {method: phone_method})
+        begin
+          RestClient.post(authorize_link(token), {method: phone_method})
+        rescue => e
+          binding.pry
+        end
       end
 
       def authorize_link(token)
-        "#{client.base_url}/#{token}/auth"
+        "#{client.base_url}/letter/#{token}/auth"
       end
 
       def create_url
