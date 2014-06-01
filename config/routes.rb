@@ -9,4 +9,6 @@ Mailbox::Application.routes.draw do
   get '/auth/failure' => 'sessions#failure'
   get "/contacts/gmail/callback" => "contact_import#import"
   get "/contacts/failure" => "contact_import#failure"
+  get "/contacts/approve" => "contact_import#approve"
+  get "/contacts/reject" => "contact_import#reject"
 end
