@@ -1,7 +1,13 @@
 %h1 Choose contacts to import
 
+= link_to 'Done Importing', supporters_path, class: 'btn btn-default'
 
 %p Please click "Import" for each contact you wish to add to your Supporters list.  Click 'Skip' to hide a contact that you do not want. 
+
+%div{class:"alert alert-success",style:"display:none",id:"alert"}
+  %button{:type=>"button",:class=>"close","aria-hidden"=>"true",:onclick=>"$('#alert').hide()"}
+    &times;
+  %p{id:"alertText"}
 
 %table.table.table-striped
   %tr
@@ -14,11 +20,12 @@
     %tr{name:contact[:email]}
       %td{nowrap:'true'}
         = link_to 'Import', {controller: 'contact_import', action:'approve', name:contact[:name], email:contact[:email], phone_number:contact[:phone_number], remote:true}, {class: 'btn btn-success'} 
-        = link_to 'Skip', {controller: 'contact_import', action:'reject', name:contact[:name], email:contact[:email], phone_number:contact[:phone_number], remote:true}, {class: 'btn btn-danger'}
+        %button{class: 'btn btn-default',:onclick=>"$(\"tr[name='#{contact[:email]}']\").hide()"}
+          Skip
       %td= contact[:name]
       %td= contact[:email]
       %td= contact[:phone_number]
 
 %br
 
-= link_to 'View Supporters', supporters_path
+= link_to 'Done Importing', supporters_path, class: 'btn btn-default'
