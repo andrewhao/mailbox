@@ -5,14 +5,16 @@
     %th Name
     %th Email
     %th Phone
+    %th Actions
 
   - @supporters.each do |supporter|
     %tr
       %td= supporter.name
       %td= supporter.email
       %td= number_to_phone(supporter.phone)
+      %td.actions= link_to "Remove", supporter_path(supporter), method: :delete
 
 %br
 
-= link_to 'New Supporter', new_supporter_path, class: 'btn btn-default'
+= link_to 'New Supporter', new_supporter_path, class: 'btn btn-success'
 = link_to 'Import contacts from GMail', '/contacts/gmail', class: 'btn btn-default'
