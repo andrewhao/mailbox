@@ -10,6 +10,7 @@ class ContactImportController < ApplicationController
     @contacts.each do |contact|
       puts "Contact found: name => #{contact[:name]}, email => #{contact[:email]}, phone => #{contact[:phone_number]}"
       
+      # only import contact if it has an email
       if contact[:email]
         @supporter = Supporter.find_by email: contact[:email]
         if @supporter
@@ -22,11 +23,11 @@ class ContactImportController < ApplicationController
         @supporter.email = contact[:email]
         @supporter.phone = contact[:phone_number]
         
-        if @supporter.save
-          puts "Contact saved"
-        else
-          puts "Contact not saved"
-        end
+        #if @supporter.save
+        #  puts "Contact saved"
+        #else
+        #  puts "Contact not saved"
+        #end
       end
     end
   end
