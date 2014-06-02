@@ -8,9 +8,8 @@
         %span.icon-bar
         %span.icon-bar
       =link_to root_path do
-        .navbar-brand 
-          MailSafe
-          %sup.blue &alpha;
+        .navbar-brand.no-padding 
+          =image_tag 'mailsafe-new.png', width: 180
     .collapse.navbar-collapse
       %ul.nav.navbar-nav
         = render 'layouts/navigation_links'
