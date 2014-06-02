@@ -1,11 +1,21 @@
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro|Lobster);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600;|Lobster);
 
 h1, h2, h3 {
     font-family: 'Lobster';
+    margin-top: 0px;
 }
 
 h4, h5, h6, p, div {
     font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+}
+
+th {
+  font-weight: 600;
+}
+
+.navbar-default {
+  background-color: #fff;
 }
 
 .navbar-default .navbar-brand {
@@ -13,6 +23,8 @@ h4, h5, h6, p, div {
   font-size: 30px;
   font-weight: bold;
   font-family: 'Lobster';
+  background-color: #fff;
+  min-height: 60px;
 }
 
 .step-container {
@@ -32,12 +44,22 @@ h4, h5, h6, p, div {
   color: #555;
 }
 
+html, body {height: 100%;}
+
 .red {
   color: red;
 }
 
 .container {
   min-height: 100%;
+  background-color: #fff;
+  border-radius: 3px;
+}
+
+main>div.container {
+  max-width: 960px;
+  margin-top: 2em;
+  padding: 2em 2em 2em;
 }
 
 .fill-height {
@@ -69,3 +91,38 @@ h4, h5, h6, p, div {
 .blue {
   color: #5ac;
 }
+
+a.recipients {
+  text-decoration: none;
+}
+div.alert, div.alert-success {
+  max-width: 960px;
+  margin: 2em auto 0;
+}
+
+.navbar-nav > li > a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 40px;
+}
+
+#footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  height: 300px;
+  background-color: #f9f9f9;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  color: #555555;
+  background-color: #eee;
+  border-bottom: 4px solid #82adc1;
+}
+
+.no-padding {
+  padding: 0px;
+  vertical-align: middle;
+}
+
+/* 467a96  #b2adc1 */

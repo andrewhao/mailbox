@@ -1,7 +1,7 @@
 - @tabs = []
 - @tabs << ["Letters", "glyphicon glyphicon-envelope", letters_path]
 - @tabs << ["Supporters", "glyphicon glyphicon-user", supporters_path]
-- @tabs << ["Compose Letter", "glyphicon glyphicon-plus", new_letter_path]
+- @tabs << ["Compose Letter", "glyphicon glyphicon-pencil", new_letter_path]
 - @tabs.each do |tab|
   %li{class: ("active" if current_page?(tab[2]))}
     = link_to tab[2] do
